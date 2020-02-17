@@ -168,7 +168,7 @@ input, select, textarea {
 		color: #000000;
 		font-family: "stolzl", Helvetica, sans-serif;
 		font-size: 1rem;
-		font-weight: 300;
+		font-weight: 400;
 		letter-spacing: 0.0375em;
 		line-height: 2;
 	}
@@ -199,6 +199,9 @@ input, select, textarea {
 
 	p {
 		margin: 0 0 2rem 0;
+		font-family: stolzl, sans-serif;
+		font-weight: 300;
+		font-style: normal;
 	}
 
 	h1, h2, h3, h4, h5, h6 {
