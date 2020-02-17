@@ -5,11 +5,12 @@
 }
 
 .video{
-  padding:100px ;
+  align-items: center;
+  text-align: center;
+
 }
 video{
-  max-width: 860px;
-  padding:10px auto;
+max-height: 350px;
 }
 .typewriter p {
   color: #000;
@@ -24,6 +25,9 @@ video{
     blink-caret .5s step-end infinite;
 }
 
+.center p {
+  text-align: center;
+}
 /* The typing effect */
 @keyframes typing {
   from { width: 0 }
