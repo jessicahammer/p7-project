@@ -4,7 +4,13 @@
   box-sizing: border-box;
 }
 
-
+.video{
+  padding:100px ;
+}
+video{
+  max-width: 860px;
+  padding:10px auto;
+}
 .typewriter p {
   color: #000;
   font-family: stolzl;

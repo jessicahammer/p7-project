@@ -1,21 +1,11 @@
-// Copyright (c) 2019 ml5
-//
-// This software is released under the MIT License.
-// https://opensource.org/licenses/MIT
-
-/* ===
-ml5 Example
-Image Classification using Feature Extraction with MobileNet. Built with p5.js
-This example uses a callback pattern to create the classifier
-=== */
 
 let featureExtractor;
 let classifier;
 let video;
 let loss;
-let dogImages = 0;
-let catImages = 0;
-let badgerImages = 0;
+let happyImages = 0;
+let sadImages = 0;
+let angryImages = 0;
 
 function setup() {
   noCanvas();
@@ -50,28 +40,28 @@ function classify() {
 
 // A util function to create UI buttons
 function setupButtons() {
-  // When the Cat button is pressed, add the current frame
-  // from the video with a label of "cat" to the classifier
-  buttonA = select('#catButton');
+  // When the happy button is pressed, add the current frame
+  // from the video with a label of "happy" to the classifier
+  buttonA = select('#happyButton');
   buttonA.mousePressed(function() {
-    classifier.addImage('cat');
-    select('#amountOfCatImages').html(catImages++);
+    classifier.addImage('happy');
+  select('#amountOfhappyImages').html(happyImages++);
   });
 
-  // When the Dog button is pressed, add the current frame
-  // from the video with a label of "dog" to the classifier
-  buttonB = select('#dogButton');
+  // When the sad button is pressed, add the current frame
+  // from the video with a label of "sad" to the classifier
+  buttonB = select('#sadButton');
   buttonB.mousePressed(function() {
-    classifier.addImage('dog');
-    select('#amountOfDogImages').html(dogImages++);
+    classifier.addImage('sad');
+    select('#amountOfsadImages').html(sadImages++);
   });
 
-  // When the Dog button is pressed, add the current frame
-  // from the video with a label of "dog" to the classifier
-  buttonC = select('#badgerButton');
+  // When the Angry button is pressed, add the current frame
+  // from the video with a label of "angry" to the classifier
+  buttonC = select('#angryButton');
   buttonC.mousePressed(function() {
-    classifier.addImage('badger');
-    select('#amountOfBadgerImages').html(badgerImages++);
+  classifier.addImage('angry');
+    select('#amountOfangryImages').html(angryImages++);
   });
 
   // Train Button
@@ -87,7 +77,7 @@ function setupButtons() {
     });
   });
 
-  // Predict Button
+// Predict Button
   buttonPredict = select('#buttonPredict');
   buttonPredict.mousePressed(classify);
 
