@@ -11,18 +11,28 @@ let video;
 // Create a KNN classifier
 const knnClassifier = ml5.KNNClassifier();
 let featureExtractor;
+let classificationResult;
 
 function setup() {
   // Create a featureExtractor that can extract the already learned features from MobileNet
   featureExtractor = ml5.featureExtractor('MobileNet', modelReady);
-  noCanvas();
+  createCanvas(640, 480);
   // Create a video element
   video = createCapture(VIDEO);
+  video.size(640, 480);
+  //video(hide);
   // Append it to the videoContainer DOM element
   video.parent('videoContainer');
   // Create the UI buttons
   createButtons();
 }
+
+function draw() {
+
+  }
+
+
+
 
 function modelReady(){
   select('#status').html('FeatureExtractor(mobileNet model) Loaded')
@@ -41,6 +51,19 @@ function addExample(label) {
   knnClassifier.addExample(features, label);
   updateCounts();
 }
+// EventListener hinzufügen
+window.addEventListener("load", function(){
+
+  // Range-Slider in Variable speichern
+  var slider = document.querySelector("input[type='range']");
+
+  // EventListener für das Verändern des Sliders hinzufügen
+  slider.addEventListener("change", function(){
+
+    // Wert des Range-Sliders anzeigen
+    document.querySelector(".range span").innerHTML = this.value;
+  });
+});
 
 // Predict the current frame.
 function classify() {
@@ -65,6 +88,8 @@ function classify() {
   // gotResults(null, res);
 }
 
+
+
 // A util function to create UI buttons
 function createButtons() {
   // When the A button is pressed, add the current frame
@@ -72,6 +97,7 @@ function createButtons() {
   buttonA = select('#addClassRock');
   buttonA.mousePressed(function() {
     addExample('Rock');
+
   });
 
   // When the B button is pressed, add the current frame
@@ -142,6 +168,7 @@ function gotResults(err, result) {
   }
 
   classify();
+  classificationResult = result[0].label;
 }
 
 // Update the example count for each label
