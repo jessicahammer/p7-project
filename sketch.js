@@ -11,13 +11,9 @@ let imagesOfB = 0;
 let classificationResult;
 let confidence = 0;
 
-let aImage;
-let bImage;
 
-function preload() {
-  aImage = loadImage('assets/images/personenkarten2.jpg');
-  bImage = loadImage('assets/images/personenkarten2.jpg');
-}
+
+
 
 function setup() {
   createCanvas(320, 240);
@@ -25,7 +21,9 @@ function setup() {
   video = createCapture(VIDEO);
   video.parent('videoContainer');
   video.size(320, 240);
-  img = loadImage('assets/images/personenkarten2.jpg'); // Load the image
+  happyPic = loadImage('assets/images/personenkarten3.jpg'); // Load the image
+  sadPic = loadImage('assets/images/personenkarten2.jpg'); // Load the image
+  angryPic = loadImage('assets/images/personenkarten4.jpg'); // Load the image
 
 
   // Extract the already learned features from MobileNet
@@ -40,12 +38,15 @@ function setup() {
 
 function draw() {
   // Displays the image at its actual size at point (0,0)
-  image(video, 0, 0);
-  if (classificationResult == 'sad') {
-    image(img, 0, 0, width, height);
-  }  else if (classificationResult == 'angry') {
-      image(img, 0, 0, width, height);
-    }
+
+  if (classificationResult == 'happy') {
+  image(happyPic, 0, 0);}
+ else if (classificationResult == 'sad') {
+  image(sadPic, 0, 0 );
+}else if (classificationResult == 'angry') {
+ image(angryPic, 0, 0 );
+}
+
 }
 // A function to be called when the model has been loaded
 function modelReady() {
