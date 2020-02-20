@@ -1,0 +1,1 @@
+Um den technischen Prototyp zu starten, bitte über einen localhost auf die  index.html zugreifen.

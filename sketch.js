@@ -21,9 +21,9 @@ function setup() {
   video = createCapture(VIDEO);
   video.parent('videoContainer');
   video.size(320, 240);
-  happyPic = loadImage('assets/images/personenkarten3.jpg'); // Load the image
-  sadPic = loadImage('assets/images/personenkarten2.jpg'); // Load the image
-  angryPic = loadImage('assets/images/personenkarten4.jpg'); // Load the image
+  happyPic = loadImage('assets/images/emoji1.jpg'); // Load the image
+  sadPic = loadImage('assets/images/emoji2.jpg'); // Load the image
+  angryPic = loadImage('assets/images/emoji3.jpg'); // Load the image
 
 
   // Extract the already learned features from MobileNet
@@ -38,7 +38,6 @@ function setup() {
 
 function draw() {
   // Displays the image at its actual size at point (0,0)
-
   if (classificationResult == 'happy') {
   image(happyPic, 0, 0);}
  else if (classificationResult == 'sad') {
@@ -127,6 +126,8 @@ function gotResults(err, results) {
     console.error(err);
   }
   if (results && results[0]) {
+    classificationResult = results[0].label;
+
     select('#result').html(results[0].label);
     select('#confidence').html(results[0].confidence.toFixed(2) * 100 + '%');
     classify();

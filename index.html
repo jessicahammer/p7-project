@@ -1,136 +1,51 @@
-<!--
-	Der Ethik-Kompass
-  Bachelorarbeit von Julia Metzmaier und Jessica Hammer
--->
 <html>
 
 <head>
-  <title>Der Ethik-Kompass</title>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <meta charset="UTF-8">
+  <title>Test</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
+  <script src="https://unpkg.com/ml5@0.4.1/dist/ml5.min.js" type="text/javascript"></script>
   <link rel="stylesheet" href="assets/css/main.css" />
   <link rel="stylesheet" href="assets/css/test1.css" />
+  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://use.typekit.net/yxr4pdz.css">
 </head>
 
-<body class="is-preload">
-  <!-- Wrapper -->
-  <div id="wrapper">
-    <!-- Intro -->
-    <section class="intro">
-      <header>
-        <h1>Der Ethik-Kompass</h1>
-        <p>Begib dich auf eine Entdeckungstour </p>
-        <ul class="actions">
-          <li><a href="#first" class="arrow scrolly"><span class="label">Next</span></a></li>
-        </ul>
-      </header>
-      <div class="content">
-        <span class="image fill" data-position="center"><img src="images/pic01.jpg" alt="" /></span>
+<body>
+  <div id="modelStatus"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-sm-12 ">
+        <h2> Technischer Prototyp</h2>
       </div>
-    </section>
-    <!-- Section -->
-    <section id="first">
-      <header>
-        <h2>Verstehen:<br>Diskriminierung in Algorithmen</h2>
-      </header>
-      <div class="content">
-        <p><strong>Der technische Prototyp</strong> Hier kommst du zur Demo, die den technischen
-          Part unserer Abgabe darstellt. Also dieses Ding, wo man Trainingsdaten sich anschauen kann
+      <div class="col-lg-4 col-sm-4 ">
+        <div id="videoContainer"></div>
+      </div>
+      <div class="col-lg-4 col-sm-4 ">
+        <button id="happyButton">Kategorie A</button>
+        <p><span id="amountOfhappyImages">0</span> Beispiele<br /></p>
+        <button id="sadButton">Kategorie B</button>
+        <p><span id="amountOfsadImages">0</span> Beispiele<br /></p>
+        <button id="angryButton">Kategorie C</button>
+        <p> <span id="amountOfangryImages">0</span>Beispiele<br /></p>
+        <br />
+      </div>
+      <div class="col-lg-4 col-sm-4 ">
+        <p><button id="train">Trainieren</button><span id="loss"></span>
+          <br></br>
+          <button id="buttonPredict">Start!</button>
         </p>
-        <ul class="actions">
-          <li><a href="proto.html" class="button large">Learn More</a></li>
-        </ul>
-      </div>
-    </section>
-    <!-- Section -->
-    <section>
-      <header>
-        <h2>Verstehen: <br>Kategorien, die zur Diskriminierung führen können</h2>
-      </header>
-      <div class="content">
-        <p><strong>Etiam tristique libero</strong> eu nibh porttitor amet fermentum. Nullam
-          venenatis erat id vehicula ultrices sed ultricies condimentum.</p>
-        <ul class="feature-icons">
-          <li class="icon solid fa-laptop">Consequat tempus</li>
-          <li class="icon solid fa-bolt">Etiam adipiscing</li>
-          <li class="icon solid fa-signal">Libero nullam</li>
-          <li class="icon solid fa-cog">Blandit condimentum</li>
-          <li class="icon solid fa-map-marker-alt">Lorem ipsum dolor</li>
-          <li class="icon solid fa-code">Nibh amet venenatis</li>
-        </ul>
-        <p>Vehicula ultrices sed ultricies condimentum. Magna sed etiam consequat, et lorem
-          adipiscing sed nulla. Volutpat nisl et tempus et dolor libero, feugiat magna tempus, sed
-          et lorem adipiscing.</p>
-      </div>
-    </section>
-    <!-- Section -->
-    <section>
-      <header>
-        <h2> Umdenken: <br>Empathie entwickeln</h2>
-      </header>
-      <div class="content">
-        <p>Lerne den Charakter kennen. Für jeden Charakter gibt es eine Karte, die beschreibt, um
-          wen es sich handelt und was diese Person häufig an Diskriminierung, bzw. Benachteiligung
-          erfährt. Zusätzlich sind der Beruf und einige Eigenschaften und Fähigkeiten vorgegeben.
+        <p>Kategorie: <span id="result">...</span><br />Sicherheit: <span id="confidence">...</span>
         </p>
-        <img class="start-img" src="assets/images/personenkarte-2.jpg" />
-        <h3>Aufgabe:</h3>
-        <p>Überlege, wie sich die Person in solchen benachteiligenden Situationen fühlt, was sie
-          über sich selbst sagt, was sie gerne in der Freizeit macht und teile ihr noch weitere
-          Fähigkeiten zu.</p>
-        <ul class="actions">
-          <li><a href="empathie.html" class="button large">Erfahre mehr</a></li>
-        </ul>
+        <p>
       </div>
-    </section>
-    <!-- Section -->
-    <section>
-      <header>
-        <h2>Anwenden:<br> Die Reise beginnt</h2>
-      </header>
-      <div class="content">
-        <p>Wir begeben uns nun mit unserem Charakter auf eine Reise, von der Buchung bis zum
-          Strandspaziergang. In welchen Szenarien wird dein Charakter anhand der Kategorien
-          diskriminiert? Wie entsteht der Bias im System und wie kann man diesen vermeiden? </p>
-        <ul class="actions">
-          <li><a href="szenarien.html" class="button large">Szenarien entdecken</a></li>
-        </ul>
+      <div class="col-lg-12 col-sm-12 ">
+        <a id="save">Speichere Modell</a> | <label for="avatar">Lade Modell:</label>
+        <input type="file" id="load" multiple />
+        </p>
       </div>
-    </section>
-    <!-- Section -->
-    <section>
-      <header>
-        <h2>Anwenden:<br> Lösungen entwickeln</h2>
-      </header>
-      <div class="content">
-        <p>Keine ahnung, was hier stehen kann.... </p>
-        <ul class="actions">
-          <li><a href="leitlinie.html" class="button large">Lösungen entdecken</a></li>
-        </ul>
-      </div>
-    </section>
-    <!-- Section -->
-    <section>
-      <header>
-        <h2>Schau dir das Toolkit im Detail an</h2>
-      </header>
-      <div class="content">
-        <p>Wir begeben uns auf eine Reise, von der buchung einer Reise bis zum entspannen am Strand.
-          Doch welche Szenarien lassen die Menschen. Darstellen kann man die Karteb in einem kleinen
-          Karussel Element. </p>
-        <ul class="actions">
-          <li><a href="test-new.html" class="button large">Learn More</a></li>
-        </ul>
-      </div>
-    </section>
-    <!-- Scripts -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/jquery.scrolly.min.js"></script>
-    <script src="assets/js/browser.min.js"></script>
-    <script src="assets/js/breakpoints.min.js"></script>
-    <script src="assets/js/util.js"></script>
-    <script src="assets/js/main.js"></script>
+      <script src="sketch.js"></script>
 </body>
 
 </html>
